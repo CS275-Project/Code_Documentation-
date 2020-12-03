@@ -19,7 +19,7 @@ class LoginGUI implements ActionListener{
     private static JTextField name;
     private static JLabel pass;
     private static JPasswordField word;
-    private static boolean correct_login = false;
+    private static JLabel failure;
     
     public static void main(String args[]){
 
@@ -41,18 +41,21 @@ class LoginGUI implements ActionListener{
        username.setBounds(100, 20, 165, 25);
        pan.add(username);
        name = new JTextField(20);
-       name.setBounds(100, 20, 80, 25);
+       name.setBounds(100, 20, 40, 25);
        pan.add(name);
-       pass = new JLabel("pass");
+       pass = new JLabel("Password:");
        pass.setBounds(50,50, 80, 25);
        pan.add(pass);
        word = new JPasswordField(20);
-       word.setBounds(100, 50, 80, 25);
+       word.setBounds(100, 50, 40, 25);
        pan.add(word); 
        JButton log = new JButton("Log in");
-       log.setBounds(50, 80, 80, 25);
+       log.setBounds(50, 80, 40, 25);
        log.addActionListener(new LoginGUI());
        pan.add(log);
+       failure = new JLabel("");
+       pan.add(failure);
+       
        frame.add(pan, BorderLayout.CENTER);
        
        frame.setVisible(true);
@@ -65,9 +68,11 @@ class LoginGUI implements ActionListener{
         
         String username = name.getText();
         String password = word.getText();
-        System.out.println(username + "," + password);
-        correct_login = true;
-        //DiningOptionsGUI dave = new DiningOptionsGUI();
-        options();
+        if(username.equals("jucasey@ursinus.edu") && password.equals("Password3188")){
+            System.out.println(username + "," + password);
+            options();
+        }else{
+            failure.setText("Incorrect username or password");
+        }
     }
 }
