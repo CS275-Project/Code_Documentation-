@@ -9,6 +9,8 @@ Date: 9/6/19
  */
 package item;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author andre
@@ -17,10 +19,13 @@ public class Spec {
     
     private String name;
     private double price;
+    public ArrayList<Spec> specs;
     
     public Spec(String name, double price){
         this.name = name;
         this.price = price;
+        
+        
     }
     
     public double getPrice(){

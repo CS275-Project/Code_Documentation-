@@ -9,19 +9,21 @@ Date: 9/6/19
  */
 package item;
 import java.util.ArrayList;
+import java.util.Random;
 /**
  *
  * @author andre
  */
 public class Burger extends Item{
     
+    public Random rand = new Random();
     public double price;
     public double cost = 0;
     public ArrayList<Spec> toppings;
-    private int orderNum = 0;
+    public int orderNum = 0;
     
     public Burger(){
-        this.orderNum++;
+        orderNum = rand.nextInt(999);
         this.price = 5.50;
         toppings = new ArrayList<>();
         

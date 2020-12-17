@@ -9,42 +9,38 @@ Date: 9/6/19
  */
 package item;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import static item.GUIFoodOptions.specs;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
+import static item.Driver.food;
 
 /**
  *
  * @author andre
  */
-public class Driver implements ActionListener {
+public class GUIFoodOptions implements ActionListener{
     
     private static JButton cancel;
-    private static JButton burger;
-    private static JButton chikTend;
-    private static JButton wing;
-    private static JButton chSteak;
+    private static JButton che;
+    private static JButton let;
+    private static JButton tom;
+    private static JButton on;
+    private Burger b = new Burger();
     
     public static void main(String[] args){
-        food();
+        specs();
     }
-        
-    public static void food(){
-            
-        
+    
+    public static void specs(){
         
         JFrame frame = new JFrame();
         frame.setSize(1100, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Grill 151");
+        frame.setTitle("Toppings");
         
         
         JPanel panel = new JPanel();
@@ -53,24 +49,24 @@ public class Driver implements ActionListener {
         
         
         
-        JButton burger = new JButton("Burger");
-        burger.setBounds(100, 450, 350, 350);
-        panel.add(burger);
-        burger.addActionListener(new Driver());
+        JButton che = new JButton("Cheese");
+        che.setBounds(100, 450, 350, 350);
+        panel.add(che);
+        che.addActionListener(new Driver());
         
-        JButton chikTend = new JButton("Chicken Tenders");
-        chikTend.setBounds(550, 50, 350, 350);
-        panel.add(chikTend);
+        JButton let = new JButton("Lettuce");
+        let.setBounds(550, 50, 350, 350);
+        panel.add(let);
         
-        JButton wing = new JButton("Chicken Wings");
-        wing.setBounds(100, 50, 350, 350);
-        panel.add(wing);
+        JButton tom = new JButton("Tomato");
+        tom.setBounds(100, 50, 350, 350);
+        panel.add(tom);
         
-        JButton chSteak = new JButton("Cheesesteak");
-        chSteak.setBounds(550, 450, 350,350);
-        panel.add(chSteak);
+        JButton on = new JButton("Onion");
+        on.setBounds(550, 450, 350,350);
+        panel.add(on);
         
-        JButton cancel = new JButton("Main Menu");
+        JButton cancel = new JButton("Return To Grill Menu");
         cancel.setBounds(400, 850, 200, 50);
         panel.add(cancel);
         cancel.addActionListener(new Driver());
@@ -98,29 +94,27 @@ public class Driver implements ActionListener {
         
         //b.printOrder();
         frame.setVisible(true);
-        }
-     
-    
-    
+    }
     @Override
     public void actionPerformed(ActionEvent e){
         
         if (e.getSource() == cancel){
-            //return to DiningOptions
-        }else if (e.getSource() == burger){
-            //create a burger object with Burger b = new Burger
-            //add selected specs with b.addSpec(Spec)
-            //print order with b.printOrder
-        }else if (e.getSource() == chikTend){
-            
-        }else if(e.getSource() == wing){
-            
-        }else if(e.getSource() == chSteak){
-            
+            food();
+        }else if (e.getSource() == che){
+            Spec cheese = new Spec("Cheese",1.00);
+            b.addSpec(cheese);
+            //add selected specs
+        }else if (e.getSource() == let){
+            Spec lettuce = new Spec("Lettuce",1.00);
+            b.addSpec(lettuce);
+        }else if(e.getSource() == tom){
+            Spec tomato = new Spec("Tomato",1.00);
+            b.addSpec(tomato);
+        }else if(e.getSource() == on){
+            Spec onion = new Spec("Onion",1.00);
+            b.addSpec(onion);
         }
         
         
     }
-
-    
 }
